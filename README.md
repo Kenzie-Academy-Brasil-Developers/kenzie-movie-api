@@ -1,24 +1,186 @@
-# json-server-base
+<h1 align="center">
+  <img alt="KenzieHub" title="KenzieHub" src="https://kenzie.com.br/_next/image?url=%2Fimages%2Flogo.png&w=640&q=75" width="100px" />
+</h1>
 
-Esse é o repositório com a base de JSON-Server + JSON-Server-Auth já configurada, feita para ser usada no desenvolvimento das API's nos Projetos Front-end.
+<h1 align="center">
+  FashionStore - API
+</h1>
 
-## Endpoints
+<p align="center">
+  <a href="#endpoints">Endpoints</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</p>
 
-Assim como a documentação do JSON-Server-Auth traz (https://www.npmjs.com/package/json-server-auth), existem 3 endpoints que podem ser utilizados para cadastro e 2 endpoints que podem ser usados para login.
+A API tem um total de 13 endpoints, sendo em volta principalmente do usuário (dev) - podendo cadastrar seu perfil, tecnologias que estuda e trabalhos realizados. <br/>
 
-### Cadastro
+A url base da API é [https://fashion-store-api.onrender.com](https://fashion-store-api.onrender.com/)
 
-POST /register <br/>
-POST /signup <br/>
-POST /users
+## Rotas que não precisam de autenticação
 
-Qualquer um desses 3 endpoints irá cadastrar o usuário na lista de "Users", sendo que os campos obrigatórios são os de email e password.
-Você pode ficar a vontade para adicionar qualquer outra propriedade no corpo do cadastro dos usuários.
+<h2 align ='center'> Listagem de produtos </h2>
+
+Nessa aplicação o usuário sem fazer login ou se cadastrar pode ver os filmes já cadastrados na plataforma, na API podemos acessar a lista dessa forma:
+
+`GET /movies - FORMATO DA RESPOSTA - STATUS 200`
+
+```json
+[
+    {
+      "id": 1,
+      "name": "The Random Heros",
+      "type": "ficção",
+      "duration": 120,
+      "synopsis": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+    },
+    {
+      "id": 2,
+      "name": "The Road",
+      "type": "ficção",
+      "duration": 90,
+      "synopsis": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+    },
+    {
+      "id": 3,
+      "name": "The City Girls",
+      "type": "comédia",
+      "duration": 84,
+      "synopsis": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+    },
+    {
+      "id": 4,
+      "name": "The Indie Movie",
+      "type": "drama",
+      "tempo": 132,
+      "synopsis": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat."
+    }
+]
+```
+
+Também é possível acessar um filme específico com suas respecitvas avaliações passando o id para rota:
+
+`GET /movies/:id?_embed=reviews - FORMATO DA RESPOSTA - STATUS 200`
+```json
+ {
+    "id": 1,
+    "name": "The Random Heros",
+    "type": "ficção",
+    "duration": 120,
+    "synopsis": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    "reviews": [
+      {
+          "movieId": 1,
+          "userId": 1,
+          "score": 8,
+          "description": "Filme muitoooooo bom."
+      }
+    ]
+}
+```
+
+Também é possível buscar as avaliações de um usuário especifico por filme:
+
+`GET /movies/:idMovie/reviews?userId=:idUser - FORMATO DA RESPOSTA - STATUS 200`
+```json
+[
+  {
+    "id": 1,
+    "movieId": 1,
+    "userId": 1,
+    "score": 8,
+    "description": "Filme muitoooooo bom."
+  }
+]
+```
+
+<h2 align ='center'> Criação de usuário </h2>
+
+`POST /users - FORMATO DA REQUISIÇÃO`
+
+```json
+{
+  "email": "johndoe@email.com",
+  "password": "123456",
+  "name": "John Doe",
+}
+```
+
+Caso dê tudo certo, a resposta será assim:
+
+`POST /users - FORMATO DA RESPOSTA - STATUS 201`
+
+```json
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAZW1haWwuY29tIiwiaWF0IjoxNjg3ODA4MTYzLCJleHAiOjE2ODc4MTE3NjMsInN1YiI6IjMifQ.nWj1gqD4t3x00UTQvfFiK-PQjcgSpzbGeHknpncgC9E",
+  "user": {
+    "email": "johndoe@email.com",
+    "name": "John Doe",
+    "id": 3
+  }
+}
+```
 
 
-### Login
+<h2 align = "center"> Login </h2>
 
-POST /login <br/>
-POST /signin
+`POST /sessions - FORMATO DA REQUISIÇÃO`
 
-Qualquer um desses 2 endpoints pode ser usado para realizar login com um dos usuários cadastrados na lista de "Users"
+```json
+{
+  "email": "johndoe@email.com",
+  "password": "123456"
+}
+```
+
+Caso dê tudo certo, a resposta será assim:
+
+`POST /login - FORMATO DA RESPOSTA - STATUS 201`
+
+```json
+{
+  "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImpvaG5kb2VAZW1haWwuY29tIiwiaWF0IjoxNjg3ODA4MTYzLCJleHAiOjE2ODc4MTE3NjMsInN1YiI6IjMifQ.nWj1gqD4t3x00UTQvfFiK-PQjcgSpzbGeHknpncgC9E",
+  "user": {
+    "email": "johndoe@email.com",
+    "name": "John Doe",
+    "id": 3
+  }
+}
+```
+
+## Rotas que necessitam de autorização
+
+Rotas que necessitam de autorização deve ser informado no cabeçalho da requisição o campo "Authorization", dessa forma:
+
+> Authorization: Bearer {token}
+
+<h2 align ='center'> Criar uma avaliação </h2>
+
+`POST /reviews - FORMATO DA REQUISIÇÃO`
+
+```json
+{
+  "movieId": 1,
+  "userId": 1,
+  "score": 8,
+  "description": "Filme muitoooooo bom."
+}
+```
+
+<h2 align ='center'> Atualizar uma avaliação </h2>
+
+`PUT /reviews/:id - FORMATO DA REQUISIÇÃO`
+
+```json
+{
+  "movieId": 1,
+  "userId": 1,
+  "score": 8,
+  "description": "Filme muitoooooo bom."
+}
+```
+
+Também é possível deletar uma avaliação, utilizando este endpoint:
+
+`DELETE /reviews/:id`
+
+```
+Não é necessário um corpo da requisição.
+```
