@@ -59,6 +59,40 @@ Nessa aplicação o usuário sem fazer login ou se cadastrar pode ver os filmes 
   ]
 ```
 
+```
+Acessar todos os filmes com as respectivas reviews:
+
+`GET /movies?_embed=reviews - FORMATO DA RESPOSTA - STATUS 200`
+
+```json
+[
+  {
+    "id": 1,
+    "name": "The Random Heros",
+    "type": "ficção",
+    "duration": 120,
+    "synopsis": "At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.",
+    "image": "https://res.cloudinary.com/dsbkp5841/image/upload/v1688390764/Rectangle_5_mgqd46.jpg",
+    "reviews": [
+      {
+        "id": 1,
+        "movieId": 1,
+        "userId": 1,
+        "score": 8,
+        "description": "Filme muitoooooo bom."
+      },
+      {
+        "movieId": 1,
+        "userId": 5,
+        "score": 8,
+        "description": "Filme massa.",
+        "id": 2
+      }
+    ]
+  },
+]  
+```
+
 Também é possível acessar um filme específico com suas respecitvas avaliações passando o id para rota:
 
 `GET /movies/:id?_embed=reviews - FORMATO DA RESPOSTA - STATUS 200`
