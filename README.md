@@ -59,7 +59,6 @@ Nessa aplicação o usuário sem fazer login ou se cadastrar pode ver os filmes 
   ]
 ```
 
-```
 Acessar todos os filmes com as respectivas reviews:
 
 `GET /movies?_embed=reviews - FORMATO DA RESPOSTA - STATUS 200`
