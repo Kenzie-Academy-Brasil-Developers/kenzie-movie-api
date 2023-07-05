@@ -81,11 +81,11 @@ Acessar todos os filmes com as respectivas reviews:
         "description": "Filme muitoooooo bom."
       },
       {
+        "id": 2,
         "movieId": 1,
         "userId": 5,
         "score": 8,
         "description": "Filme massa.",
-        "id": 2
       }
     ]
   },
@@ -105,6 +105,7 @@ Também é possível acessar um filme específico com suas respecitvas avaliaç�
     "image": "https://res.cloudinary.com/dsbkp5841/image/upload/v1688390764/Rectangle_5_mgqd46.jpg",
     "reviews": [
       {
+          "id": 1,
           "movieId": 1,
           "userId": 1,
           "score": 8,
