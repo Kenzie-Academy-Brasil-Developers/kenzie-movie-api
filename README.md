@@ -184,6 +184,36 @@ Caso dê tudo certo, a resposta será assim:
 }
 ```
 
+<h2 align ='center'> Consultar usuários </h2>
+
+`GET /users - FORMATO DA REQUISIÇÃO`
+
+```
+json
+[
+	{
+		"email": "kenzinho@mail.com",
+		"name": "Kenzinho",
+		"age": 38,
+		"id": 1
+	}
+]
+```
+
+<h2 align ='center'> Consultar um único usuario </h2>
+
+`GET /users/:id - FORMATO DA REQUISIÇÃO`
+
+```
+json
+{
+  "email": "kenzinho@mail.com",
+  "name": "Kenzinho",
+  "age": 38,
+  "id": 1
+}
+```
+
 ## Rotas que necessitam de autorização
 
 Rotas que necessitam de autorização deve ser informado no cabeçalho da requisição o campo "Authorization", dessa forma:
