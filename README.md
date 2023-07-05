@@ -188,8 +188,7 @@ Caso dê tudo certo, a resposta será assim:
 
 `GET /users - FORMATO DA REQUISIÇÃO`
 
-```
-json
+```json
 [
 	{
 		"email": "kenzinho@mail.com",
@@ -204,8 +203,7 @@ json
 
 `GET /users/:id - FORMATO DA REQUISIÇÃO`
 
-```
-json
+```json
 {
   "email": "kenzinho@mail.com",
   "name": "Kenzinho",
